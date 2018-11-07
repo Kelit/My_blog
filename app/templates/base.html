@@ -6,8 +6,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="&&&&">
-
-    <title>Блог</title>
+    {% if title %}
+        <title>{{ title }} - БЛОГ</title>
+    {% else %}
+        <title>Добро пожаловать в мой блог</title>
+    {% endif %}
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -28,12 +31,21 @@
             <a class="nav-link active" href="#">Главная</a>
             <a class="nav-link" href="#">Посты</a>
             <a class="nav-link" href="#">Обо мне</a>
-            <a class="nav-link" href="login.html">Регистрация</a>
+            <a class="nav-link" href="/login">Регистрация</a>
           </nav>
         </div>
       </header>
 
       <main role="main" class="inner cover">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
       </main>
 
