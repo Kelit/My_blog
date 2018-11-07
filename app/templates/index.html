@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h1 class="cover-heading">Главная страница</h1>
+        <p class="cover-heading">Всем привет! меня зовут <strong>Денис</strong>! Да, это мой <strong>личный блог</strong> </p>
+        <hr>
+        <p>Кроме здесь, я есть</p>
+        <a href="https://github.com/Kelit"><img class="mb-4" src="{{ url_for('static', filename='img/OctoCat.svg') }}" alt="" width="72" height="92"></a>
+        <a href="https://vk.com/mr.kelit"><img class="mb-4" src="{{ url_for('static', filename='img/VK.svg') }}" alt="" width="72" height="92"></a>
+{% endblock %}
