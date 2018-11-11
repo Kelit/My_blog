@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="&&&&">
+    <link rel="icon" href="" >
     {% if title %}
         <title>{{ title }} - БЛОГ</title>
     {% else %}
@@ -28,15 +28,15 @@
         <div class="inner">
           <h3 class="masthead-brand"><strong>БЛОГ</strong></h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="/index">Главная</a>
-            <a class="nav-link" href="#">Посты</a>
-            <a class="nav-link" href="#">Обо мне</a>
-            <a class="nav-link" href="/login">Регистрация</a>
+            <a class="nav-link {% if active1 %} active {% else %} {% endif %}" href="/index">Главная</a>
+            <a class="nav-link {% if active2 %} active {% else %} {% endif %}" href="#">Посты</a>
+            <a class="nav-link {% if active3 %} active {% else %} {% endif %}" href="/about">Об авторе</a>
+            <a class="nav-link {% if active4 %} active {% else %} {% endif %}" href="/login">Регистрация</a>
           </nav>
         </div>
       </header>
 
-      <main role="main" class="inner cover">
+      <main>
         {% with messages = get_flashed_messages() %}
           {% if messages %}
         <ul>
@@ -51,7 +51,7 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>&copy; Котики</p>
+          <p><img src="{{ url_for('static', filename='img/cat-laptop-icon.png') }}">&copy; Котики </p>
         </div>
       </footer>
     </div>
