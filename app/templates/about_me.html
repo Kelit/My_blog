@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="text-justify">
-        <h1>Об авторе</h1><br>
-        <img src="{{ url_for('static', filename='img/me1.png') }}" class="rounded float-left img-rounded" >
-        <p class="lead">Студент <strong><a href="http://khsu.ru/">ХГУ</a></strong>, кафедра ПОВТиАС направление "Информатика и вычислительная техника."
-         Занимаюсь программирование с 14 лет. Данный блог я придумал для курсового проекта по "Интернет программированию".
-        Тематика блога будет посвещена не только программированию, но и другим интересным мне вещам :).
+    <div class="row ">
+        <div class="col-md-6 float-justify">
+            <h1>Об авторе</h1>
+             <img src="{{ url_for('static', filename='img/me1.png') }}" class="float-left rounded  img-rounded" >
+        </div>
+        <div class="col-md-6  text-justify">
+        <p>Студент <strong><a href="http://khsu.ru/">ХГУ</a></strong>, кафедра ПОВТиАС направление "Информатика и вычислительная техника."
+            Занимаюсь программирование с 14 лет. Данный блог я придумал для курсового проекта по "Интернет программированию".
+            Тематика блога будет посвещена не только программированию, но и другим интересным мне вещам :)
             Связаться со мной можно по e-mail: <a href="mailto:nobilismendaxf@protonmail.ru">nobilismendaxf@protonmail.ru</a>, или по ссылкам на главной странице.
         </p>
+        </div>
     </div>
 {% endblock %}
