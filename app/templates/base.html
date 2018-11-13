@@ -31,8 +31,9 @@
             <a class="nav-link {% if active1 %} active {% else %} {% endif %}" href="/index">Главная</a>
             <a class="nav-link {% if active2 %} active {% else %} {% endif %}" href="/post">Посты</a>
             <a class="nav-link {% if active3 %} active {% else %} {% endif %}" href="/about">Об авторе</a>
-            <a class="nav-link {% if active4 %} active {% else %} {% endif %}" href="/login">Регистрация</a>
-            <a class="nav-link {% if active5 %} active {% else %} {% endif %}" href="{{ url_for('logout') }}">Выйти</a>
+            <a class="nav-link {% if active4 %} active {% else %} {% endif %}" href="/register">Регистрация</a>
+            <a class="nav-link {% if active5 %} active {% else %} {% endif %}" href="/login">Войти</a>
+            <a class="nav-link {% if active6 %} active {% else %} {% endif %}" href="{{ url_for('logout') }}">Выйти</a>
           </nav>
         </div>
       </header>
