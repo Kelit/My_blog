@@ -28,8 +28,8 @@
         <div class="inner">
           <h3 class="masthead-brand"><strong>БЛОГ</strong></h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link {% if active1 %} active {% else %} {% endif %}" href="/index">Главная</a>
-            <a class="nav-link {% if active2 %} active {% else %} {% endif %}" href="/post">Посты</a>
+            <a class="nav-link {% if active1 %} active {% else %} {% endif %}" href="{{ url_for('index') }}">Главная</a>
+            <a class="nav-link {% if active2 %} active {% else %} {% endif %}" href="{{ url_for('posts.index') }}">Посты</a>
             <a class="nav-link {% if active3 %} active {% else %} {% endif %}" href="/about">Об авторе</a>
             <a class="nav-link {% if active4 %} active {% else %} {% endif %}" href="/register">Регистрация</a>
             <a class="nav-link {% if active5 %} active {% else %} {% endif %}" href="/login">Войти</a>

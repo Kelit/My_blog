@@ -47,12 +47,6 @@ def login_p():
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', active5="active", title='Регистрация', form=form)
-    # form = LoginForm()
-    # if form.validate_on_submit():
-    #     flash('Login requested for user {}, remember_me'.format(
-    #         form.username.data, form.remember_me.data))
-    #     return redirect('/index')
-    # return render_template('login.html',active4="active", title='Регистрация', form=form)
 
 @app.route('/logout')
 def logout():
@@ -65,17 +59,3 @@ def logout():
 def about():
     return render_template("about_me.html",active3="active", title='Об авторе')
 
-@app.route('/post')
-@login_required
-def post():
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template("post.html",active2="active", title='Посты',posts=posts)
