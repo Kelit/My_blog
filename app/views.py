@@ -12,11 +12,11 @@ from app.forms import RegistrationForm
 
 @app.route('/')
 @app.route('/index')
-#@login_required
+@login_required
 def index():
     return render_template("index.html",active1="active",)
 
-#@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return  redirect(url_for('index'))
