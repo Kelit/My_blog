@@ -4,13 +4,18 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+import re
+
+def slugify(s):
+    pattern = r'[^\w+]'
+    return re.sub(pattern, '-', s)
 
 class User(UserMixin,db.Model): #USer
     id = db.Column(db.Integer,  primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
+    # posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -21,14 +26,24 @@ class User(UserMixin,db.Model): #USer
     def check_password(self, password):
         return check_password_hash(self.password_hash,password)
 
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow) #utcnow()
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    title = db.column(db.String(140))
+    slug = db.column(db.String(140))
+    body = db.Column(db.Text)
+    created = db.column(db.DateTime)
+
+    def __init__(self, *args, **kwargs):
+        super(Post, self).__init__(*args, **kwargs)
+        self.generate_slug()
+
+    def generate_slug(self):
+        if self.title:
+            self.slug = slugify(self.title)
 
     def __repr__(self):
-        return '<Post {}>'.format(self.body)
+        return '<Post id: {}, title: {}>'.format(self.id, self.title)
 
 
 @login.user_loader
