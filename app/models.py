@@ -9,13 +9,12 @@ import re
 def slugify(s):
     pattern = r'[^\w+]'
     return re.sub(pattern, '-', s)
-
+#UserMixin,
 class User(UserMixin,db.Model): #USer
     id = db.Column(db.Integer,  primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    # posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -29,10 +28,9 @@ class User(UserMixin,db.Model): #USer
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.column(db.String(140))
-    slug = db.column(db.String(140))
+    title = db.Column(db.String(140), unique=True)
     body = db.Column(db.Text)
-    created = db.column(db.DateTime)
+    created = db.Column(db.DateTime, default=datetime.now())
 
     def __init__(self, *args, **kwargs):
         super(Post, self).__init__(*args, **kwargs)

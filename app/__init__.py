@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 
 from flask_login import LoginManager
 
-from posts.blueprint import posts
+
 
 # Flask server
 app = Flask(__name__)
@@ -18,7 +18,6 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login_p'
 
-# blueprint app
-app.register_blueprint(posts, url_prefix='/posts')
+
 
 from app import views, models
