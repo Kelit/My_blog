@@ -34,6 +34,14 @@
             <a class="nav-link {% if active4 %} active {% else %} {% endif %}" href="/register">Регистрация</a>
             <a class="nav-link {% if active5 %} active {% else %} {% endif %}" href="/login">Войти</a>
             <a class="nav-link {% if active6 %} active {% else %} {% endif %}" href="{{ url_for('logout') }}">Выйти</a>
+            {% if active7 %}
+              <form class="navbar-form navbar-right" method="GET">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q" value="{{ request.args.get('q', '') }}">
+                </div>
+                <button type="submit" class="btn btn-default">Поиск</button>
+              </form>
+            {% endif %}
           </nav>
         </div>
       </header>
