@@ -2,9 +2,29 @@
 
 {% block content %}
     <h1>Посты</h1>
-    {% for post in posts %}
+    {% for post in pages.items %}
         <p>
         <a href="{{ url_for('posts.post_detail', slug=post.slug) }}">{{ post.title }}</a>
         </p>
     {% endfor %}
+    <nav>
+        <ul class="paginator">
+
+            <li {% if not pages.has_prev %} class="disabled" {% endif %}>
+                <a href="./?page={{ pages.prev_num }}" aria-label="Previous"><span arial-hiden="true">&laquo;</span></a>
+            </li>
+            <!-- переберает номера страниц -->
+            {% for page in pages.iter_pages() %}
+            <!-- проверям данная страница активна или нет -->
+            <li {%if page==pages.page%} class="active" {%endif%}>
+                <a href="./?page={{page}}">{{page}}<span class="sr-only">(current)</span></a>
+            </li>
+
+            {% endfor %}
+
+             <li {% if not pages.has_next %} class="disabled" {% endif %}>
+                <a href="./?page={{ pages.next_num }}" aria-label="next"><span arial-hiden="true">&raquo;</span></a>
+             </li>
+        </ul>
+    </nav>
 {% endblock %}

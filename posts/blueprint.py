@@ -34,11 +34,22 @@ def create_post():
 def index():
     active7 = True
     q = request.args.get('q')
+
+    page = request.args.get('page')
+
+    if page and page.isdigit():
+        page = int(page)
+    else:
+        page=1
+
     if q:
-        posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q)).all()
+        posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q))#.all()
     else:
         posts = Post.query.order_by(Post.created.desc())
-    return render_template('posts/list.html', posts=posts, active7=active7)
+
+    pages = posts.paginate(page=page, per_page=3)
+
+    return render_template('posts/list.html', active7=active7, pages=pages)
 
 # /blog/post
 @posts.route('/<slug>')
